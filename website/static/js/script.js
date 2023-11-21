@@ -27,3 +27,14 @@ var swiper = new Swiper(".slide-content", {
         },
     },
   });
+function myFunction() {
+  var elements = document.getElementsByClassName('loh');
+  for (var i = 0; i < elements.length; i++) {
+    var input = elements[i];
+    if (input.type === "password") {
+      input.type = "text";
+    } else {
+      input.type = "password";
+    }
+  }
+}
