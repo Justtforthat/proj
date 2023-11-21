@@ -1,0 +1,52 @@
+{% extends "base_pc.html" %}
+
+{% block title %}
+    Твоё сердце будет разбито
+{% endblock %}
+
+{% block body %}
+    <h2 class="title">Твоё сердце будет разбито</h2>
+    <div class="container">
+        <div class="product">
+            <div class="row align-items-start">
+                <div class="col-md-6">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <img src="{{ url_for('static', filename='img/img_2.jpg') }}" alt="" class="product-img img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="product-text">
+                        <hr class="product-line">
+                        <p class="description">
+                            Я вижу его каждый день в окне дома напротив. Он самый крутой парень в моей новой школе.
+                            Красавчик, от которого все без ума. Опасный одиночка, который меня не замечает.
+                            Однажды он спас меня от одноклассниц, решивших превратить мою жизнь в ад.
+                            Cказал всем, что я его девушка, и при всех украл мой первый поцелуй!
+                            Теперь никто не смеет тронуть меня, потому что не рискнет с ним связываться.
+                            Взамен я должна буду делать все, что он скажет. Я терпеть его не могу, но вынуждена подчиниться,
+                            если хочу закончить школу без проблем. Чье сердце будет разбито? Мое или его?
+                        </p>
+                        <p class="price">3831₸</p>
+                        <input type="hidden" name="name" value="Твоё сердце будет разбито">
+                        <input type="hidden" name="description" value="
+                            Издательство	Clever,
+                            ISBN	978-5-00211-133-6,
+                            Переплет	твердый переплет
+                            ">
+                        <input type="hidden" name="price" value="3831">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_2.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="product-button">
+                                Add to profile
+                            </button>
+                        {% else %}
+                            <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {% endif %}
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

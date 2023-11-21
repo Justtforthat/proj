@@ -1,0 +1,52 @@
+{% extends "base_pc.html" %}
+
+{% block title %}
+    Краткая история казахов
+{% endblock %}
+
+{% block body %}
+    <h2 class="title">Краткая история казахов</h2>
+    <div class="container">
+        <div class="product">
+            <div class="row align-items-start">
+                <div class="col-md-6">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <img src="{{ url_for('static', filename='img/img_1.jpg') }}" alt="" class="product-img img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="product-text">
+
+                        <hr class="product-line">
+                        <p class="description">
+                            «Краткая история казахов» — это ответы на самые важные вопросы сложной и многогранной истории
+                            казахского народа, просто и доступно рассказанные Султаном Акимбековым, автором классических
+                            академических работ по истории Казахстана.<br><br>
+
+                            Султан Акимбеков родился в 1964 году, автор книг «История степей» (2011, 2016, 2018 годы издания),
+                            «История Афганистана» (2015), «Казахстан в Российской империи» (2018). Работал главным редактором
+                            казахстанских журналов «Континент» и «Центр Азии», директором Института мировой экономики и политики. В настоящее время директор института азиатских исследований в Алматы.
+                        </p>
+                        <p class="price">4500₸</p>
+                        <input type="hidden" name="name" value="Краткая история казахов">
+                        <input type="hidden" name="description" value="
+                            Издательство	Институт Азиатских Исследований,
+                            ISBN	978-601-7550-13-4,
+                            Переплет	твердый переплет">
+                        <input type="hidden" name="price" value="4500">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_1.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="product-button">
+                                Add to profile
+                            </button>
+                        {% else %}
+                            <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {% endif %}
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

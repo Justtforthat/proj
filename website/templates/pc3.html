@@ -1,0 +1,51 @@
+{% extends "base_pc.html" %}
+
+{% block title %}
+    Убийство Роджера Экройда
+{% endblock %}
+
+{% block body %}
+    <h2 class="title">Убийство Роджера Экройда</h2>
+    <div class="container">
+        <div class="product">
+            <div class="row align-items-start">
+                <div class="col-md-6">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <img src="{{ url_for('static', filename='img/img_3.jpg') }}" alt="" class="product-img img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="product-text">
+                        <hr class="product-line">
+                        <p class="description">
+                            Поначалу убийство эсквайра Роджера Экройда не казалось полиции загадочным —
+                            все указывало на виновность пасынка убитого. Но иначе считает Эркюль Пуаро,
+                            который недавно переехал в эти места, в очередной раз решив уйти на покой.
+                            Он начинает расследование, имея вокруг множество подозреваемых — родственников
+                            и знакомых эсквайра, каждый из которых был заинтересован в его смерти.
+                            Повествование ведется от имени доктора Шеппарда, последнего, кто видел Экройда живым...
+                        </p>
+                        <p class="price">2991₸</p>
+                        <input type="hidden" name="name" value="Убийство Роджера Экройда">
+                        <input type="hidden" name="description" value="
+                                Издательство	Эксмо,
+                                ISBN	978-5-04-101008-9,
+                                Переплет	твердый переплет
+                            ">
+                        <input type="hidden" name="price" value="2991">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_3.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="product-button">
+                                Add to profile
+                            </button>
+                        {% else %}
+                            <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {% endif %}
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

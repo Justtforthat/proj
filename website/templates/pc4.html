@@ -1,0 +1,54 @@
+{% extends "base_pc.html" %}
+
+{% block title %}
+    Токийский гуль
+{% endblock %}
+
+{% block body %}
+    <h2 class="title">Токийский гуль</h2>
+    <div class="container">
+        <div class="product">
+            <div class="row align-items-start">
+                <div class="col-md-6">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <img src="{{ url_for('static', filename='img/img_4.jpg') }}" alt="" class="product-img img-fluid">
+                </div>
+                <div class="col-md-6">
+                    <div class="product-text">
+                        <hr class="product-line">
+                        <p class="description">
+                            Прошлое хранит свои собственные тайны... Потеряв родителей, юные Тока и Аято Кирисима
+                            всячески стараются утвердиться в двадцатом районе, ведь среди гулей непозволительно быть
+                            слабым. Понимает это и Кадзуити Бандзё – гуль, следующий строгим правилам и старающийся
+                            избегать лишних неприятностей. Вот только он влюблен в ненасытную Ридзэ Камисиро, а беды
+                            идут за ней по пятам. Жизнь кипит и в мире людей: студентка Академии ККГ Акира Мадо
+                            сталкивается с мальчиком, жаждущим отомстить чудовищу-людоеду за смерть отца,
+                            а Кэн Канэки пытается ужиться в неприветливой приемной семье, совершенно не подозревая,
+                            что ждет его в будущем... В эту книгу вошло шесть новых историй из вселенной
+                            «Токийского гуля», действие которых разворачивается до основных событий манги.
+                        </p>
+                        <p class="price">3703₸</p>
+                        <input type="hidden" name="name" value="Токийский гуль">
+                        <input type="hidden" name="description" value="
+                            Автор Исида С., Товада С.,
+                            ISBN 978-5-389-17318-7,
+                            Жанр Манга
+                            ">
+                        <input type="hidden" name="price" value="3703">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_4.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                            <button type="submit" class="product-button">
+                                Add to profile
+                            </button>
+                        {% else %}
+                            <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {% endif %}
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

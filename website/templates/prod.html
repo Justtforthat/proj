@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <title>StoreKZ</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link rel="icon" href="favicon.ico">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.jpg') }}" type="image/jpeg">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/prod.css')}}">
+    <link href="fontawesome-free-6.4.0-web/css/fontawesome.css" rel="stylesheet">
+    <link href="fontawesome-free-6.4.0-web/css/brands.css" rel="stylesheet">
+    <link href="fontawesome-free-6.4.0-web/css/solid.css" rel="stylesheet">
+
+</head>
+
+<header class="p-3 text-bg-money" style="background-color: cornflowerblue!important">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="/main" class="nav-link px-2 text-white">Home</a></li>
+          <li><a href="prod" class="nav-link px-2 text-white">Our Products</a></li>
+          {% if user.is_authenticated %}
+          <a class="nav-link px-2 text-white" id="logout" href="/logout">Logout</a>
+          {% else %}
+          <a class="nav-link px-2 text-white" id="login" href="/login">Login</a>
+          <a class="nav-link px-2 text-white" id="signUp" href="/sign-up">Sign Up</a>
+          {% endif %}
+        </ul>
+        <div class="text-end">
+          {% if user.is_authenticated %}
+          <a href="/profile" type="button" class="btnn btn btn-warning"><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></a>
+          {% else %}
+          <a href="/sign-up" type="button" class="btnn btn btn-warning"><i class="fa-solid fa-cart-shopping" style="color: #000000;"></i></a>
+          {%endif%}
+          <a href="user_page" type="button" class="btnn btn"><i class="fa-sharp fa-solid fa-user"></i></a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+<body>
+    <div class="prod-photo">
+        <img src="{{url_for ('static', filename = 'img/img_prod.jpg')}}" class="img-fluid " alt="">
+    </div>
+    <div class="main">
+        <div class="container">
+            <div class="row align-items-start">
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc">
+                            <img src="{{ url_for('static', filename='img/img_1.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+
+                        <div class="product-text">
+                            <h3>
+                                Краткая история казахов
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">4500₸</p>
+                        <input type="hidden" name="name" value="Краткая история казахов">
+                        <input type="hidden" name="description"
+                            value="
+                            Издательство	Институт Азиатских Исследований,
+                            ISBN	978-601-7550-13-4,
+                            Переплет	твердый переплет">
+                        <input type="hidden" name="price" value="4500">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_1.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc2">
+                            <img src="{{ url_for('static', filename='img/img_2.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+                        <div class="product-text">
+                            <h3>
+                                Твоё сердце будет разбито
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">3831₸</p>
+                        <input type="hidden" name="name" value="Твоё сердце будет разбито">
+                        <input type="hidden" name="description" value="
+                            Издательство	Clever,
+                            ISBN	978-5-00211-133-6,
+                            Переплет	твердый переплет">
+                        <input type="hidden" name="price" value="3831">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_2.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc3">
+                            <img src="{{ url_for('static', filename='img/img_3.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+                        <div class="product-text">
+                            <h3>
+                                Убийство Роджера Экройда
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">2991₸</p>
+                        <input type="hidden" name="name" value="Убийство Роджера Экройда">
+                        <input type="hidden" name="description" value="
+                                Издательство	Эксмо,
+                                ISBN	978-5-04-101008-9,
+                                Переплет	твердый переплет">
+                        <input type="hidden" name="price" value="2991">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_3.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc4">
+                            <img src="{{ url_for('static', filename='img/img_4.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+                        <div class="product-text">
+                            <h3>
+                                Токийский гуль
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">3703₸</p>
+                        <input type="hidden" name="name" value="Токийский гуль">
+                        <input type="hidden" name="description" value="
+                            Автор Исида С., Товада С.,
+                            ISBN 978-5-389-17318-7,
+                            Жанр Манга">
+                        <input type="hidden" name="price" value="3703">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_4.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc5">
+                            <img src="{{ url_for('static', filename='img/img_5.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+                        <div class="product-text">
+                            <h3>
+                                Убийца Гоблинов
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">6160₸</p>
+                        <input type="hidden" name="name" value="Убийца Гоблинов">
+                        <input type="hidden" name="description" value="
+                            Автор Кагю К.,
+                            ISBN 978-5-907014-85-5,
+                            Жанр Манга">
+                        <input type="hidden" name="price" value="6160">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_5.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    </form>
+                </div>
+                <div class="col">
+                    <form action="{{ url_for('views.add_product') }}" method="post">
+                        <a href="pc6">
+                            <img src="{{ url_for('static', filename='img/img_6.jpg') }}" alt=""
+                            class="product-img">
+                        </a>
+                        <div class="product-text">
+                            <h3>
+                                Судьба/Истоки
+                            </h3>
+                        </div>
+                        <hr class="product-line">
+                        <p class="price">4920₸</p>
+                        <input type="hidden" name="name" value="Судьба/Истоки">
+                        <input type="hidden" name="description" value="
+                        Автор Уробути Г.,
+                            ISBN 978-5-91996-313-4,
+                            Жанр Манга">
+                        <input type="hidden" name="price" value="4920">
+                        <input type="hidden" name="image_filename"
+                            value="{{ url_for('static', filename='img/img_6.jpg') }}">
+                        <hr class="product-line">
+                        {% if user.is_authenticated %}
+                        <button type="submit" class="product-button">
+                            Add to profile
+                        </button>
+                        {% else %}
+                        <a href="/sign-up" type="button" class="product-button">Add to Profile</a>
+                        {%endif%}
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <div>
+                <hr style=" border: 1px solid white!important; opacity: 10!important;">
+                <nav class="navbar">
+                    <ul class="navbar-menu" style="padding-left: 0;">
+                        <p>@ 2023 STORE. All rights reserved</p>
+                    </ul>
+                </nav>
+                <table>
+                    <caption>Delivery</caption>
+                    <tr>
+                        <th>Kazakhstan
+                            <br /> Russia <br />
+                            Europe
+                        </th>
+                    </tr>
+            </div>
+        </div>
+    </footer>
+    <a style="color: black!important;">
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4ebea0040a.js" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+            crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/4ebea0040a.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
