@@ -38,3 +38,6 @@ function myFunction() {
     }
   }
 }
+function myFfunction() {
+  document.getElementById("frm1").reset();
+}

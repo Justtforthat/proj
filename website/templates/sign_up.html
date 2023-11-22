@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% block title %}Sign Up{% endblock %} {% block
   content %}
-  <form method="POST">
+  <form id="frm1" method="POST">
     <h3 text-align="center">Sign Up</h3>
     <div class="form-group">
       <label for="email">Email Address</label>
@@ -46,6 +46,7 @@
       <input type="checkbox" onclick="myFunction()">Show Password
     <br />
     <button type="submit" class="btn btn-primary">Submit</button>
+  <input type="button" class = "btn btn-primary" onclick="myFfunction()" value="Clear">
   </form>
   <script src="https://kit.fontawesome.com/4ebea0040a.js" crossorigin="anonymous"></script>
   {% endblock %}
